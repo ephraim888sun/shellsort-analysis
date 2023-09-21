@@ -18,6 +18,9 @@ Code: an integer denoting how the hlist array (as in the source code) is to be f
 
 - 4: hlist should be [4 k+1 + 3 * 2 k + 1, ... 8, 1 ], where k is the maximum number such that 4 k+1 + 3 * 2 k + 1 is still (strictly) smaller than the number of objects to be sorted. If there are 8 or fewer numbers in the array to be sorted, the list should be [1].
 
+
+we can conclude with the following analysis.
+
 ### Following Graph Analysis
 
 
