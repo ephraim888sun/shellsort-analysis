@@ -9,12 +9,11 @@ int main()
    vector<Stuff> vec;
    for (int set = 0; set < 100; set++) {
 
-   
-   for (int i = 0; i < 1000; i++)
-	{
-	   Stuff s;
-	   vec.push_back(s);
-	}
+      for (int i = 0; i < 15000; i++)
+      {
+         Stuff s;
+         vec.push_back(s);
+      }
 
    // for (int i = 0; i < 10; i++)
 	// {
@@ -23,28 +22,27 @@ int main()
 
    // cout << "-----\n";
 
-   ShellSort(vec, 1);
+      ShellSort(vec, 4);
 
+      // for (int i = 0; i < 10; i++)
+      // {
+      //    cout << vec[i] << endl;
+      // }
 
-   // for (int i = 0; i < 10; i++)
-	// {
-	//    cout << vec[i] << endl;
-	// }
+      // cout << (vec[0] < vec[1]) << endl;
+      // cout << "set " << set << " ,compareCount : " << Stuff::compareCount << endl;
+      cout << Stuff::compareCount << endl;
+      // bool Allright = true;
+      // for (int i = 0; i < vec.size() - 1; i++) {
+      //    if (vec[i]<vec[i+1]) {
+      //       Allright = false;
+      //    }
+      // }
 
-   // cout << (vec[0] < vec[1]) << endl;
-   // cout << "set " << set << " ,compareCount : " << Stuff::compareCount << endl;
-   cout << Stuff::compareCount << endl;
-           // bool Allright = true;
-           // for (int i = 0; i < vec.size() - 1; i++) {
-           //    if (vec[i]<vec[i+1]) {
-           //       Allright = false;
-           //    }
-           // }
+      // cout << "Allright: " << Allright << endl;
 
-           // cout << "Allright: " << Allright << endl;
-
-           Stuff::compareCount = 0;
-   vec.clear();
+      Stuff::compareCount = 0;
+      vec.clear();
    }
    return 0;
 }
