@@ -1,7 +1,7 @@
 #include <vector>
 #include <ctime>		// keep this line if you want to generate different random objects for each run
 #include "stuff.h"
-#include "sort.h"
+#include "ShellSort.h"
 
 int main()
 {
