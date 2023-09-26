@@ -15,31 +15,9 @@ int main()
          vec.push_back(s);
       }
 
-   // for (int i = 0; i < 10; i++)
-	// {
-	//    cout << vec[i] << endl;
-	// }
-
-   // cout << "-----\n";
-
       ShellSort(vec, 4);
 
-      // for (int i = 0; i < 10; i++)
-      // {
-      //    cout << vec[i] << endl;
-      // }
-
-      // cout << (vec[0] < vec[1]) << endl;
-      // cout << "set " << set << " ,compareCount : " << Stuff::compareCount << endl;
       cout << Stuff::compareCount << endl;
-      // bool Allright = true;
-      // for (int i = 0; i < vec.size() - 1; i++) {
-      //    if (vec[i]<vec[i+1]) {
-      //       Allright = false;
-      //    }
-      // }
-
-      // cout << "Allright: " << Allright << endl;
 
       Stuff::compareCount = 0;
       vec.clear();

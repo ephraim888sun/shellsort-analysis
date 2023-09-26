@@ -1,78 +1,60 @@
 #include <vector>
 #include "stuff.h"
 
-void ShellSort(vector<Stuff> &s, int code) {
-    if (code < 0 || code > 4) {
-        cout << "Error: Invalid code. Code must be between 0 and 4." << endl;
+void ShellSort(std::vector<Stuff> &s, int code)
+{
+    if (code < 0 || code > 4)
         exit(1);
-    }
 
+    std::vector<int> hlist;
     int n = s.size();
-    vector<int> hlist;
 
     if (code == 0)
-    {
         hlist.push_back(1);
-    }
     else if (code == 1)
-    {
-        int k = 1;
-        while (k * k < n)
+        for (int k = 1; k * k < n; k++)
         {
-            hlist.push_back(k * k);
-            k++;
+            hlist.insert(hlist.begin(), k * k);
         }
-    }
     else if (code == 2)
     {
-        int k = 1;
-        while (pow(2, k) < n)
+        for (int k = 0; (1 << k) < n; k++)
         {
-            hlist.push_back(pow(2, k));
-            k++;
+            hlist.insert(hlist.begin(), (1 << k));
         }
     }
     else if (code == 3)
     {
-        int k = 1;
-        while (pow(2, k) - 1 < n)
+        for (int k = 0; ((1 << k) - 1) < n; k++)
         {
-            hlist.push_back(pow(2, k) - 1);
-            k++;
+            hlist.insert(hlist.begin(), (1 << k) - 1);
         }
     }
     else if (code == 4)
     {
-        int k = 0;
-        while (4 * pow(2, k + 1) + 3 * pow(2, k) + 1 < n)
+
+        for (int k = 0; (pow(4, (k + 1)) + 3 * (1 << k) + 1) < n; k++)
         {
-            k++;
+            hlist.insert(hlist.begin(), pow(4, (k + 1)) + 3 * (1 << k) + 1);
         }
-        if (k > 0)
+        if (n <= 8)
         {
-            for (int i = k; i >= 0; i--)
-            {
-                hlist.push_back(4 * pow(2, i + 1) + 3 * pow(2, i) + 1);
-            }
-        }
-        else
-        {
+            hlist.clear();
             hlist.push_back(1);
         }
     }
 
-    for (int h : hlist)
+    for (int i : hlist)
     {
-        for (int i = h; i < n; i++)
+        for (int j = i; j < n; j++)
         {
-            Stuff temp = s[i];
-            int j = i;
-            while (j >= h && s[j - h] < temp)
+            Stuff temp = s[j];
+            int k;
+            for (k = j; k >= i && s[k - i] < temp; k -= i)
             {
-                s[j] = s[j - h];
-                j -= h;
+                s[k] = s[k - i];
             }
-            s[j] = temp;
+            s[k] = temp;
         }
     }
 };
